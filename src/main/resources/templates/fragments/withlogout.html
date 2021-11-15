@@ -1,0 +1,26 @@
+<th:block th:fragment="with_logout(header)">
+    <header style="height: 8rem;
+                  background-color: #483434;
+                  color: #EED6C4;
+                  padding-top: 2rem;
+                  display: flex;
+                  align-content: center;
+                  justify-content: space-between;
+
+      ">
+        <h1 style="text-align: center;  margin: 2rem;" th:text="${header}"></h1>
+
+        <div>
+            <a th:href="@{/}" style="color: #FFF3E4">Main Page</a>
+        </div>
+
+        <form th:action="@{/logout}" method="post" style="margin-right: 3rem">
+            <button type="submit" style="padding: 0.5rem 1rem;
+                                           background-color: #EED6C4;
+                                           color: #483434;
+                                           border-radius: .5rem;
+      ">LOGOUT
+            </button>
+        </form>
+    </header>
+</th:block>

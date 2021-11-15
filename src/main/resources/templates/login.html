@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login page</title>
+</head>
+<body style="margin:0;padding: 0; box-sizing: border-box; background-color: #EED6C4">
+<div style="margin: 5rem auto;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 35%;
+            border: 2px solid #483434;
+            padding: 2rem 3rem;
+            background-color: #6B4F4F;
+            border-radius: .5rem;
+            color: #EED6C4;
+    ">
+    <h1 style="text-align: center">Please Sing In</h1>
+    <form th:method="post" th:action="@{/login}" style="display:flex; flex-direction: column;
+        align-content:
+    center;justify-content: space-between">
+        <label for="username" style="margin-bottom: 1rem">Username</label>
+        <input type="text" id="username" name="username" style="margin-bottom: 1rem;
+                                                                                        padding: .5rem 1rem;
+                                                                                        border-radius: .3rem;
+                                                                                        border:none">
+
+        <label for="password" style="margin-bottom: 1rem">Password</label>
+        <input type="password" id="password" name="password" style="margin-bottom:1rem;
+                                                                                        padding: .5rem 1rem;
+                                                                                        border-radius: .3rem;
+                                                                                        border:none">
+
+        <button type="submit"
+                style="padding: .5rem 1rem;
+                       background-color: #EED6C4;
+                       margin-top: 2rem;
+                       margin-bottom: 3rem;
+                       border-radius: .5rem;
+        ">
+            Sing In
+        </button>
+    </form>
+</div>
+
+
+</body>
+</html>

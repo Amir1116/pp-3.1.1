@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>users</title>
+</head>
+<body style="margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #FFF3E4;
+">
+<div style="display: grid;
+            grid-template-rows: 1fr 3fr 1fr;
+            height: 100%;
+            width: 100%;
+    ">
+    <div th:insert="/fragments/withlogout::with_logout(header = 'All Users')"></div>
+    <div style="width: 80%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    margin: auto;
+                    border: 2px solid #483434;
+                    border-radius: .5rem;
+                    padding: 3rem 4rem;
+                    background-color: #EED6C4;
+         ">
+        <table border="1" style="background-color: #FFF3E4">
+            <th:block></th:block>
+            <tr>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Show</th>
+            </tr>
+            <th:block th:each="user : ${users}">
+                <tr>
+                    <td th:text="${user.getName()}"></td>
+                    <td th:text="${user.getLastName()}"></td>
+                    <td th:text="${user.getEmail()}"></td>
+                    <td style="background-color: #483434">
+                        <a th:href="@{'/admin/'+${user.getId()}+'/edit'}" style="
+                                                                         text-decoration: none;
+                                                                         color: #FFF3E4;
+                                                                         text-align: center;
+                    ">edit user</a>
+                    </td>
+                    <td>
+                        <form th:method="DELETE" th:action="@{'/admin/'+${user.getId()}+'/delete'}">
+                            <button type="submit" style="width: 100%; background-color: #6B4F4F;color: #FFF3E4;
+                            border:2px solid #483434 ">delete
+                            </button>
+                        </form>
+                    </td>
+                    <td style="background-color: #483434">
+                        <a
+                                th:href="@{'/'+${user.isAdmin()?'admin':'user'}+'/'+${user.getUsername()}}" style="
+                     text-decoration: none;
+                     color: #FFF3E4;
+                     text-align: center;
+">show user</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+
+        <a th:href="@{'/admin/create'}"
+           style="border: 2px solid #483434;
+              text-decoration: none;
+              margin-top: 3rem;
+              color: black;
+              width:50%;
+              text-align: center;
+              background-color: #6B4F4F;
+              border-radius: .5rem;
+              color: #FFF3E4;
+                ">New User</a>
+    </div>
+</div>
+</body>
+</html>

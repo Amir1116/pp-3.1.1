@@ -1,0 +1,16 @@
+<th:block th:fragment="fieldslist">
+    <h2 th:text="${user.getUsername()}" style="text-align: center"></h2>
+    <h2 th:text="${user.getEmail()}" style="text-align: center"></h2>
+    <h2 th:text="${user.getName()}" style="text-align: center"></h2>
+    <h2 th:text="${user.getLastName()}" style="text-align: center"></h2>
+    <h2 th:text="${user.getId()}" style="text-align: center"></h2>
+    <a th:href="@{'/user/'+${user.getId()}+'/edit'}" style="border: 2px solid #483434;
+                     border-radius: .5rem;
+                     background-color: #483434;
+                     text-decoration: none;
+                     color: #FFF3E4;
+                     padding: 0.5rem;
+                     margin: 2rem auto;
+                     width:50%;
+                     text-align: center">Edit Profile</a>
+</th:block>

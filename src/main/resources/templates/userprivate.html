@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Private Page</title>
+</head>
+<body style="margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #FFF3E4;
+">
+<div style="display: grid;
+            grid-template-rows: 1fr 3fr 1fr;
+            height: 100%;
+            width: 100%;
+    ">
+
+    <div th:insert="/fragments/withlogout::with_logout(header = 'User Private Page')"></div>
+    <div th:insert="/fragments/fieldslist::fieldslist"></div>
+    <div th:replace="/fragments/footer::footer"></div>
+
+</div>
+</body>
+</html>

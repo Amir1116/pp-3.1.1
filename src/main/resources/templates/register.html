@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+</head>
+<body style="margin:0;padding: 0; box-sizing: border-box; background-color: #EED6C4">
+
+<div style="margin: 5rem auto;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 35%;
+            border: 2px solid #483434;
+            padding: 2rem 3rem;
+            background-color: #6B4F4F;
+            border-radius: .5rem;
+            color: #EED6C4;
+    ">
+    <h2 style="text-align: center;
+               margin-bottom: 2rem;
+         ">
+        Registration
+    </h2>
+
+    <form th:method="POST" th:action="@{/register/user}" style="display:flex; flex-direction: column; align-content:
+    center;justify-content: space-between">
+
+        <label for="username" style="margin-bottom: 1rem">Username</label>
+        <input type="text" th:value="${user.getUsername()}" id="username" name="username" style="margin-bottom: 1rem;
+                                                                                        padding: .5rem 1rem;
+                                                                                        border-radius: .3rem;
+                                                                                        border:none">
+
+        <label for="email" style="margin-bottom: 1rem">Email</label>
+        <input type="text" th:value="${user.getEmail()}" id="email" name="email" style="margin-bottom: 1rem;
+                                                                                        padding: .5rem 1rem;
+                                                                                        border-radius: .3rem;
+                                                                                        border:none">
+
+        <label for="password" style="margin-bottom: 1rem">Password</label>
+        <input type="password" id="password" name="password" style="margin-bottom:1rem;
+                                                                padding: .5rem 1rem;
+                                                                border-radius: .3rem;
+                                                                border:none">
+
+        <label for="name" style="margin-bottom: 1rem">Firstname</label>
+        <input type="text" th:value="${user.getName()}" id="name" name="name" style="margin-bottom: 1rem;
+                                                                                    padding: .5rem 1rem;
+                                                                                    border-radius: .3rem;
+                                                                                    border:none">
+
+        <label for="lastname" style="margin-bottom: 1rem">Lastname</label>
+        <input type="text" th:value="${user.getLastName()}" id="lastname" name="lastName" style="margin-bottom: 1rem;
+                                                                                                 padding: .5rem 1rem;
+                                                                                                 border-radius: .3rem;
+                                                                                                 border:none">
+
+
+        <button type="submit"
+                style="padding: .5rem 1rem;
+                       background-color: #EED6C4;
+                       margin-top: 2rem;
+                       margin-bottom: 3rem;
+                       border-radius: .5rem;
+        ">
+            Submit
+        </button>
+
+    </form>
+</div>
+</body>
+</html>
