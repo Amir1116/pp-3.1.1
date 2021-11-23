@@ -1,5 +1,6 @@
 package com.example.crudboot.config.security;
 
+import com.example.crudboot.config.security.handler.AuthenticationSuccessHandlerImpl;
 import com.example.crudboot.dao.UserDao;
 import com.example.crudboot.dao.UserDaoImpl;
 import com.example.crudboot.services.UserDetailsServiceImpl;
@@ -23,32 +24,15 @@ import javax.sql.DataSource;
 public class SecurityConf
         extends WebSecurityConfigurerAdapter {
 
-    private DataSource dataSource;
-
-    @Autowired
-    public SecurityConf(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new AuthenticationSuccessHandlerImpl();
     }
 
     @Bean
-    public UserDao userDao() {
-        return new UserDaoImpl(passwordEncoder());
-    }
-
-    @Bean
-    public UserService userService() {
-        return new UserServiceImpl(userDao());
-    }
-
-
-    @Bean
-    public UserDetailsServiceImpl uUserDetailsService() {
-        return new UserDetailsServiceImpl(userService());
+    @Override
+    public UserDetailsServiceImpl userDetailsService() {
+        return new UserDetailsServiceImpl();
     }
 
     @Bean
@@ -59,7 +43,7 @@ public class SecurityConf
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(uUserDetailsService());
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService());
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
     }

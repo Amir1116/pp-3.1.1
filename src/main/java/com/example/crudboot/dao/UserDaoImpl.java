@@ -32,7 +32,7 @@ public class UserDaoImpl
     }
 
     @Override
-    public List<User> listUsers() {
+    public List<User> getUsersList() {
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 

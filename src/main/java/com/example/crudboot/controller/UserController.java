@@ -41,14 +41,8 @@ public class UserController {
     @RequestMapping("/{id}")
     public String update(@ModelAttribute("user") User user, @ModelAttribute("role") String role,
                          @PathVariable("id") int id, ModelMap model) {
+        userService.updateUser(user,role,id);
         User userOut = userService.getUser(id);
-        userOut.setUsername(user.getUsername());
-        userOut.setEmail(user.getEmail());
-        userOut.setName(user.getName());
-        userOut.setLastName(user.getLastName());
-        userOut.setPassword(user.getPassword());
-        userService.updateUser(userOut);
-        System.out.println(userOut.getUsername());
         model.addAttribute("user", userOut);
         if (userOut.isAdmin()) {
             return "redirect:/admin/" + userOut.getUsername();

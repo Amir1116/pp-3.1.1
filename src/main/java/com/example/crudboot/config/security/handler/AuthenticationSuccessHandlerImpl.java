@@ -1,4 +1,4 @@
-package com.example.crudboot.config.security;
+package com.example.crudboot.config.security.handler;
 
 import com.example.crudboot.model.Role;
 import org.springframework.security.core.Authentication;

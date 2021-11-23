@@ -9,7 +9,7 @@ import java.util.List;
 public interface RoleService {
     void save(Role role);
 
-    List<Role> listRoles();
+    List<Role> getRolesList();
 
     void deleteRole(int id);
 
